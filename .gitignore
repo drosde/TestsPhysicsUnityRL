@@ -259,3 +259,28 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Assets/DigitalKonstrukt/Prototyping_Pack_Free
+/Assets/Fonts
+/Assets/General Textures
+/Assets/Materials
+/Assets/Models
+/Assets/N3D/WheelPackMilitary/M92A
+/Assets/Prefabs
+/Assets/Scenes/TestTrack
+/Assets/Scenes/TestTrack_Profiles
+/Assets/Scenes/SampleScene.unity
+/Assets/Scenes/TestTrack.unity
+/Assets/Scripts/Editor
+/Assets/Scripts/CarSwitcher.cs
+/Assets/Scripts/EasySuspension.cs
+/Assets/Scripts/GraphOverlay.cs
+/Assets/Scripts/WheelDrive.cs
+/Assets/Sprites
+/Assets/textures/Environment
+/Assets/VehicleToolsQuickStart.pdf
+/Assets/ball.physicMaterial
+/Library
+/Temp
+/TestVehiclePhysics.sln
+/Assembly-CSharp.csproj
+/Assembly-CSharp-Editor.csproj
