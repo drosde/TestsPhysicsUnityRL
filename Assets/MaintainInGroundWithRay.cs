@@ -12,33 +12,41 @@ public class MaintainInGroundWithRay : MonoBehaviour {
     void Update () {
         RaycastHit hit;
         float distance;
-        float distanceGlobalPoin;
+        float globalDistancePoint;
 
         Vector3 direction = transform.TransformDirection(Vector3.down) * meters; // 0.5 meters
 
         if (Physics.Raycast(transform.position, direction, out hit))
         {
             distance = hit.distance;
-            distanceGlobalPoin = carTr.position.y - hit.point.y;
+            float posHitY = hit.point.y;
+            globalDistancePoint = carTr.position.y - posHitY;
 
-            //if (distance > baseRayDistance)
-            //{
-            //    var p = carTr.position;
-            //    p.y -= hit.point.y + baseCarDistance;
-            //    carTr.position = p;
-            //}
+            if (globalDistancePoint != baseCarDistance)
+            {
+                var p = carTr.position;
+                p.y = posHitY + baseCarDistance;
+                carTr.position = p;
+            }
+            
 
             string info = string.Format(
                 "Distance: {0:0.00} " +
-                "- Name: {1} " +
-                "- Pos Y coll: {2}" +
-                "- Vector 3 hit: {3}",
+                "|| Name: {1} " +
+                "|| Pos Y coll: {2} " +
+                "|| hit Point: {3} " + 
+                "|| Global distance Point: {4} " +
+                "|| Normal: {5} ",
                 distance,
                 hit.collider.gameObject.name,
                 hit.collider.gameObject.transform.position.y,
-                hit.point
+                hit.point,
+                globalDistancePoint,
+                transform.up - hit.normal
                 );
             Debug.Log(info);
         }
+
+        //carTr.up -= (transform.up - hit.normal) * 0.1f;
     }
 }

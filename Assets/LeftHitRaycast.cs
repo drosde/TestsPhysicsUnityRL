@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FowardHitRaycast : MonoBehaviour {
+public class LeftHitRaycast : MonoBehaviour {
 
     public Transform carTr;
     public Rigidbody carRb;
@@ -12,15 +12,16 @@ public class FowardHitRaycast : MonoBehaviour {
     {
         RaycastHit hit;
         float distance;
-        
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * meters; // 0.5 meters
+
+        Vector3 direction = transform.TransformDirection(Vector3.left) * meters; // 0.5 meters
 
         if (Physics.Raycast(transform.position, direction, out hit))
         {
             distance = hit.distance;
 
-            if (distance <= 1) {
-                carTr.Rotate(new Vector3(-2, 0, 0));
+            if (distance <= 1)
+            {
+                carTr.Rotate(new Vector3(0, 0, -2));
 
                 //string info = string.Format(
                 //    "Distance: {0:0.00} " +

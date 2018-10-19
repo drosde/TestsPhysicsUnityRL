@@ -18,7 +18,10 @@ public class raycastDrawer : MonoBehaviour {
     public PositionRay raycastPosition;
     public float meters = 0.5f;
 
-	void Update () {
+    public bool UsarTransformDown;
+    public bool UsarTransformUp;
+
+    void Update () {
         Vector3 dir = Vector3.up;
 
         switch (raycastPosition) {
@@ -41,6 +44,9 @@ public class raycastDrawer : MonoBehaviour {
                 dir = Vector3.forward;
                 break;
         }
+
+        if(UsarTransformDown) dir = -transform.up;
+        if (UsarTransformUp) dir = Vector3.up;
 
         Vector3 direction = transform.TransformDirection(dir) * meters; // 0.5 meters
         Debug.DrawRay(transform.position, direction, rayColor);

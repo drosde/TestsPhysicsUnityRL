@@ -20,8 +20,8 @@ public class CarMechanics : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        carRb = GetComponent<Rigidbody>();
-        carTr = GetComponent<Transform>();
+        //carRb = GetComponent<Rigidbody>();
+        //carTr = GetComponent<Transform>();
 
         currentSpeed = 0;
     }
@@ -32,14 +32,16 @@ public class CarMechanics : MonoBehaviour {
         float moveHorizontal = InputManager.MainHorizontal();
         float moveVertical = InputManager.MainVertical();
 
-        currentSpeed = carRb.velocity.magnitude * 3.6;
+        //currentSpeed = carRb.velocity.magnitude * 3.6;
 
         if (!flying) availableJumps = 2;
 
         // Jump
         if (InputManager.XButton() && availableJumps > 1)
         {
-            carRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //carRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            carTr.Translate(Vector3.up * jumpForce);
+            Debug.Log("xdxdxd");
             availableJumps--;
         }
 
@@ -55,17 +57,17 @@ public class CarMechanics : MonoBehaviour {
             carTr.Rotate(InputManager.MainVerticalMovement() * 5, moveHorizontal * 3, 0);
         }
 
-        Move(moveVertical, moveHorizontal);
+        //Move(moveVertical, moveHorizontal);
     }
 
-    void Move(float movVertical, float movHorizontal)
-    {
-        float climbSpeed = carTr.position.y > 0.30f ? 1.2f : 1;
-        Vector3 verticalDir = transform.forward * movVertical * aceleration * climbSpeed;
-        carRb.AddForce(verticalDir);
+    //void Move(float movVertical, float movHorizontal)
+    //{
+    //    float climbSpeed = carTr.position.y > 0.30f ? 1.2f : 1;
+    //    Vector3 verticalDir = transform.forward * movVertical * aceleration * climbSpeed;
+    //    carRb.AddForce(verticalDir);
 
-        transform.Rotate(new Vector3(0, movHorizontal, 0) * Time.deltaTime * rotationSpeed, Space.World);
-    }
+    //    carTr.Rotate(new Vector3(0, movHorizontal, 0) * Time.deltaTime * rotationSpeed, Space.World);
+    //}
 
     private void OnGUI()
     {
